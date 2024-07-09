@@ -20,3 +20,11 @@ class ProductPageLocators():
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert:nth-child(1) .alertinner strong")
     BASKET_TOTAL = (By.CSS_SELECTOR, ".alert-info .alertinner strong")
 
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+
+class BasketPageLocators():
+    VIEW_BASKET_BUTTON = (By.XPATH, "//a[text()='View basket']")
+    EMPTY_BASKET_TEXT = (By.XPATH, "//div[@id='content_inner']/p")
+
