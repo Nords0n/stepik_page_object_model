@@ -2,31 +2,33 @@ import pytest
 
 from .pages.base_page import BasePage
 from .pages.product_page import ProductPage
+from .pages.main_page import MainPage
+from .pages.basket_page import BasketPage
 
 # def test_guest_can_see_basket_button(browser3):
 #     link = "https://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/?promo=newYear"
 #     page = ProductPage(browser3, link)
 #     page.open()
 #     page.button_should_exist()
-
-def test_guest_cant_see_success_message_after_adding_product_to_basket(browser3):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
-    page = ProductPage(browser3, link)
-    page.open()
-    page.no_success_message_after_adding_product_to_basket()
-
-def test_guest_cant_see_success_message(browser3):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
-    page = ProductPage(browser3, link)
-    page.open()
-    page.shouldnt_see_success_message_after_opening()
-
-def test_message_disappeared_after_adding_product_to_basket(browser3):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
-    page = ProductPage(browser3, link)
-    page.open()
-    page.message_is_disappeared()
-
+#
+# def test_guest_cant_see_success_message_after_adding_product_to_basket(browser3):
+#     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+#     page = ProductPage(browser3, link)
+#     page.open()
+#     page.no_success_message_after_adding_product_to_basket()
+#
+# def test_guest_cant_see_success_message(browser3):
+#     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+#     page = ProductPage(browser3, link)
+#     page.open()
+#     page.shouldnt_see_success_message_after_opening()
+#
+# def test_message_disappeared_after_adding_product_to_basket(browser3):
+#     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+#     page = ProductPage(browser3, link)
+#     page.open()
+#     page.message_is_disappeared()
+#
 # product_base_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
 # urls = [f"{product_base_link}/?promo=offer{no}" for no in range(10)]
 # urls[7] = pytest.param(urls[7], marks=pytest.mark.xfail)
@@ -35,3 +37,21 @@ def test_message_disappeared_after_adding_product_to_basket(browser3):
 #     page = ProductPage(browser3, link)
 #     page.open()
 #     page.button_should_be_clickable()
+#
+# def test_guest_should_see_login_link_on_product_page(browser3):
+#     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+#     page = ProductPage(browser3, link)
+#     page.open()
+#     page.should_be_login_link()
+
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser3):
+    link = "https://selenium1py.pythonanywhere.com/en-gb/"
+    page = BasketPage(browser3, link)
+    page.open()
+    page.should_be_text_basket_is_empty()
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser3):
+    link = "https://selenium1py.pythonanywhere.com/en-gb/"
+    page = BasketPage(browser3, link)
+    page.open()
+    page.shouldnt_be_product_in_basket()
