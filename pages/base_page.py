@@ -1,6 +1,8 @@
 import re
 import math
 import time
+from .locators import BasePageLocators
+from .locators import BasketPageLocators
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
@@ -9,11 +11,26 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
+
 class BasePage():
     def __init__(self, browser3, url, timeout=10):
         self.browser3 = browser3
         self.url = url
         self.browser3.implicitly_wait(timeout)
+
+    def go_to_login_page(self):
+        link = self.browser3.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def guest_click_button_view_basket_see_basket_page(self):
+        link = self.browser3.find_element(*BasketPageLocators.VIEW_BASKET_BUTTON)
+        link.click()
+
+        assert self.is_element_present(*BasketPageLocators.VIEW_BASKET_BUTTON), "View basket is not presented"
+        assert "/basket" in self.browser3.current_url, "You are not on Basket Page"
 
     def open(self):
         self.browser3.get(self.url)
