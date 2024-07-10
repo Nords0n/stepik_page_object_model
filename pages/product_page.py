@@ -12,7 +12,7 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.BASKET_BUTTON), "Add button doesnt exist"
 
     def no_success_message_after_adding_product_to_basket(self):
-        button_add = self.browser3.find_element(*ProductPageLocators.BASKET_BUTTON)
+        self.browser3.find_element(*ProductPageLocators.BASKET_BUTTON)
 
         add_to_basket_button = WebDriverWait(self.browser3, 10).until(
             EC.element_to_be_clickable(ProductPageLocators.BASKET_BUTTON)
@@ -28,7 +28,7 @@ class ProductPage(BasePage):
             "Success message is presented, but shouldnt"
 
     def message_is_disappeared(self):
-        button_add = self.browser3.find_element(*ProductPageLocators.BASKET_BUTTON)
+        self.browser3.find_element(*ProductPageLocators.BASKET_BUTTON)
 
         add_to_basket_button = WebDriverWait(self.browser3, 10).until(
             EC.element_to_be_clickable(ProductPageLocators.BASKET_BUTTON)
@@ -49,7 +49,7 @@ class ProductPage(BasePage):
 
         time.sleep(1)
 
-        self.solve_quiz_and_get_code()
+        # self.solve_quiz_and_get_code()
 
         # Получить название товара и цену с страницы товара
         product_name = self.browser3.find_element(*ProductPageLocators.PRODUCT_NAME).text
