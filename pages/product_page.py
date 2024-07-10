@@ -49,7 +49,7 @@ class ProductPage(BasePage):
 
         time.sleep(1)
 
-        # self.solve_quiz_and_get_code()
+        # self.solve_quiz_and_get_code() Комменчу, так как нужно было для задания
 
         # Получить название товара и цену с страницы товара
         product_name = self.browser3.find_element(*ProductPageLocators.PRODUCT_NAME).text
